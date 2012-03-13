@@ -9,6 +9,7 @@ class Salle{
 		int get_capacite() const;
 		int get_numero() const;
 		bool verifier_capacite(const int & nb_eleve) const;
+		bool operator<(const Salle &a,const Salle &b) const;
 		virtual bool verifier_type(const int & type) const =0;
 		virtual ~Salle();
 };
