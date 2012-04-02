@@ -26,18 +26,18 @@
 		}
 		
 
-		bool Date::operator==(const Date & a,const Date & b) const
+		bool Date::operator==(const Date & b) const
 		{
-			return a.jour_==b.jour_ && a.mois_==b.mois_ && a.annee_==b.annee_ ;
+			return jour_==b.jour_ && mois_==b.mois_ && annee_==b.annee_ ;
 		}
-		bool Date::operator<(const Date &a,const Date &b) const{
-			if(a.annee_!=b.annee_){
-				return a.annee_<b.annee_;
+		bool Date::operator<(const Date &b) const{
+			if(annee_!=b.annee_){
+				return annee_<b.annee_;
 			}
-			else if(a.mois_!=b.mois_){
-				return a.mois_< b.mois;
+			else if(mois_!=b.mois_){
+				return mois_< b.mois;
 			}
-			else return a.jour<b.jour;
+			else return jour<b.jour;
 
 		}
 

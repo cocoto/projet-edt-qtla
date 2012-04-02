@@ -29,7 +29,7 @@ class Date
 		/*
 		* Opérateur de comparaison
 		*/
-		bool operator==(const Date &a,const Date & b) const;
-		bool operator<(const Date &a,const Date &b) const;
+		bool operator==(const Date & b) const;
+		bool operator<(const Date &b) const;
 };
 #endif

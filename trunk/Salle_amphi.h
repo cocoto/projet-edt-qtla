@@ -13,7 +13,8 @@ class Salle_amphi : public Salle
 		*/
 		Salle_amphi(const int &numero, const int &capacite,const bool & visio);
 		Salle_amphi(const int &numero, const int &capacite); //Par défaut un 
-				
+        bool verifier_type(const Type_salle &type) const;
+        ~Salle_amphi();
 		/*
 		* Met à jour la présence d'une visio
 		*/

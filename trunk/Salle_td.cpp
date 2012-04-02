@@ -15,3 +15,7 @@
 		{
 			return videoprojecteur_;
 		}
+
+        bool Salle_td::verifier_type(const Type_salle & type) const{
+            return type==Salle_TD;
+        }

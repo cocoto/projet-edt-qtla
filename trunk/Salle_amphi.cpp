@@ -15,3 +15,6 @@
 		{
 			return visio_conference_;
 		}
+        bool Salle_amphi::verifier_type(const Type_salle & type) const{
+            return type==Salle_Amphi;
+        }

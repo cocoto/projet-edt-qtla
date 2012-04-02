@@ -12,7 +12,7 @@ class Salle_tp : public Salle
 		* Pré-condition : les capacités sont entières et positives (ou nulles)
 		*/
 		Salle_tp(const int &numero, const int &capacite,const int & nbmachine);
-		
+        bool verifier_type(const Type_salle &type) const;
 		/*
 		* Vérifie la capacité de la salle en prenant en compte le nombre de machine
 		*/
