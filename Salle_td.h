@@ -13,7 +13,7 @@ class Salle_td : public Salle
 		*/
 		Salle_td(const int &numero, const int &capacite,const bool & videoprojecteur);
 		Salle_td(const int &numero, const int &capacite);
-				
+        bool verifier_type(const Type_salle &type) const;
 		/*
 		*Met à jour la présence d'un vidéoprojecteur dans la salle
 		*/

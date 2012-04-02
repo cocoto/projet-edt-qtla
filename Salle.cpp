@@ -16,9 +16,9 @@ bool Salle::verifier_capacite(const int & nb_eleve) const
 {
 	return nb_eleve <= capacite_;
 }
-bool operator <(const Salle & a, const Salle & b) const
+bool Salle::operator <(const Salle &b) const
 {
-	return a.get_numero()<b.get_numero();
+    return get_numero()<b.get_numero();
 }
 
 Salle::~Salle()

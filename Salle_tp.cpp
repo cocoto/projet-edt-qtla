@@ -28,3 +28,7 @@ int Salle_tp::get_nb_machines() const
 {
 	return nb_machines_;
 }
+
+bool Salle_tp::verifier_type(const Type_salle & type) const{
+    return type==Salle_TP;
+}

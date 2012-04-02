@@ -1,6 +1,6 @@
 #include "Creneau.h"
 
-Creneau::Creneau(const Salle & salle, const Module & module, const Date & date, const Groupe & groupe, const float & duree, const int & heure)
+Creneau::Creneau(Salle* salle, Module* module, Date* date, Groupe* groupe, const float & duree, const int & heure)
 {
 	//Constructeur écrit sous cette forme pour plus de simplicité
 	duree_=duree;
@@ -11,25 +11,34 @@ Creneau::Creneau(const Salle & salle, const Module & module, const Date & date, 
 	groupe_=groupe;
 }
 
-
-bool Creneau::operator !=(const Creneau & creneau1, const Creneau & creneau2) const
+//On considère qu'un seul créneau se déroule dans une salle donnée, un jour donné et une heure donnée
+bool Creneau::operator==(const Creneau & creneau2) const
 {
-	return !(creneau1==creneau2);
+    return  getDate()==creneau2.getDate() &&
+            getHeure()==creneau2.getHeure() &&
+            getSalle()==creneau2.getSalle();
+}
+
+bool Creneau::operator !=(const Creneau & creneau2) const
+{
+    return  getDate()!=creneau2.getDate() ||
+            getHeure()!=creneau2.getHeure() ||
+            getSalle()!=creneau2.getSalle();
 }
 
 
 //On trie les Creneau par date puis heure puis salle.
 //Un créneau se déroulant dans la même salle à la même heure le même jour est impossible
-bool Creneau::operator <(const Creneau & creneau1, const Creneau & creneau2) const
+bool Creneau::operator <(const Creneau & creneau2) const
 {
-	if(creneau1.getDate()!=creneau2.getDate())
+    if(getDate()!=creneau2.getDate())
 	{
-		return creneau1.getDate()<creneau2.getDate();
+        return getDate()<creneau2.getDate();
 	}
-	else if(creneau1.getHeure()!=creneau2.getHeure()){
-		return creneau1.getHeure<creneau2.getHeure;
+    else if(getHeure()!=creneau2.getHeure()){
+        return getHeure()<creneau2.getHeure();
 	}
-	else return creneau1.getSalle()<creneau2.getSalle();
+    else return getSalle()<creneau2.getSalle();
 }
 
 
@@ -39,14 +48,6 @@ bool Creneau::verifier_capacite() const
 	return getSalle()->verifier_capacite(getGroupe()->nb_etu());
 }
 
-
-//On considère qu'un seul créneau se déroule dans une salle donnée, un jour donné et une heure donnée
-bool Creneau::operator ==(const Creneau & creneau1, const Creneau & creneau2) const
-{
-	return  creneau1.getDate()==creneau2.getDate() &&
-			creneau1.getHeure()==creneau2.getHeure() &&
-			creneau1.getSalle()==creneau2.getSalle();
-}
 
 Date *Creneau::getDate() const
 {

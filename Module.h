@@ -1,11 +1,12 @@
 #ifndef _MODULE_H_
 #define _MODULE_H_
 #include <iostream>
-#include "Groupe.h"
 #include "Enseignant.h"
 #include "Creneau.h"
-#include <vector>
-typedef std::vector<Creneau> liste_creneau;
+#include "Groupe.h"
+#include <set>
+class Creneau;
+typedef std::set<Creneau> liste_creneau;
 class Module
 {
 	private:
@@ -20,8 +21,14 @@ class Module
 		
 		//Permet de vérifier que le nombre d'heures effectuées par un groupe dans une liste de créneaux corrrespond bien aux modalités du
 		//Module. (nb heures supérieur ou égal) Les CTD sont considérés comme des cours de type TD
-		bool est_complet(const liste_creneau & tab_creneau, const Groupe & grp);
+        bool est_complet(const liste_creneau & tab_creneau, Groupe *grp);
+        std::string get_Code() const;
+        int get_NombreCM() const;
+        int get_NombreTD() const;
+        int get_NombreTP() const;
+        int get_NombreCTD() const;
 
+        bool operator<(const Module &m2) const;
 };
 
 #endif
