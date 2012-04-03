@@ -92,6 +92,13 @@ int main(){
     //SUPPRESSION D'UN ENSEIGNANT
     //edt.supprimer_enseignant(1);
 
+    //SUPPRESSION D'UNE DATE
+    //edt.supprimer_date(Date(1,12,2012));
+
+
+    //SUPPRESSION DU PLUS VIEUX CRENEAU
+    //edt.supprimer_creneau(*(edt.liste_creneaux().begin()));
+
     itcren=edt.liste_creneaux().begin();
     while(itcren!=edt.liste_creneaux().end()){
         std::cout<<"Cours de "<<(*itcren)->getModule()->get_Code()<<" en salle "<<(*itcren)->getSalle()->get_numero()<< "pour le groupe "<<
@@ -101,7 +108,7 @@ int main(){
     }
 
     //SUPPRESSION D'UN ETUDIANT
-    edt.supprimer_etudiant(2);
+    //edt.supprimer_etudiant(2);
     it=edt.liste_etudiants(601).begin();
     while(it!=edt.liste_etudiants(601).end())
     {

@@ -206,6 +206,19 @@ Enseignant* Edt::chercher_enseignant(const int &noens) const{
         return *it;
     }
 }
+
+Date* Edt::chercher_date(const Date &date) const{
+    liste_dat::iterator it=liste_date.begin();
+    while(it!=liste_date.end()&&!((**it)==date))
+    {
+        it++;
+    }
+    if(it!=liste_date.end())
+    {
+        return *it;
+    }
+}
+
 void Edt::inscrire_etudiant(const int &noetu,const int &nogrp){
     Etudiant* etu=chercher_etudiant(noetu);
     Groupe* grp=chercher_groupe(nogrp);
@@ -225,7 +238,7 @@ void Edt::desinscrire_module(const int &no_groupe,std::string code){
     chercher_groupe(no_groupe)->supprimer_module(code);
 }
 
-int Edt::creer_creneau(const int &nsalle,const std::string &nmodule,Date* date,const int & ngroupe, const float &duree,const int &heure){
+void Edt::creer_creneau(const int &nsalle,const std::string &nmodule,Date* date,const int & ngroupe, const float &duree,const int &heure){
     liste_cren::iterator creneau=liste_creneau.begin();
     bool compatible=true;
     Salle* salle=chercher_salle(nsalle);
@@ -313,6 +326,19 @@ void Edt::supprimer_groupe(const int no_groupe){
     liste_groupe.erase(chercher_groupe(no_groupe));
 }
 
-void Edt::supprimer_creneau(Creneau *cren){
+void Edt::supprimer_date(const Date &date){
+    liste_cren::iterator it=liste_creneau.begin();
+    while(it!=liste_creneau.end())
+    {
+        if(*((*it)->getDate())==date)
+        {
+            liste_creneau.erase(it);
+        }
+        it++;
+    }
+    liste_date.erase(chercher_date(date));
+}
 
+void Edt::supprimer_creneau(Creneau *cren){
+    liste_creneau.erase(cren);
 }
