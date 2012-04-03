@@ -56,7 +56,8 @@ public:
     void supprimer_groupe(const int no_groupe);
     void supprimer_creneau(Creneau *cren);
 
-    int creer_creneau(const int &nsalle,const std::string &nmodule,Date * date,const int & ngroupe, const float &duree,const int &heure);
+    void creer_creneau(const int &nsalle,const std::string &nmodule,Date * date,const int & ngroupe, const float &duree,const int &heure);
+
     //Affectations
     void inscrire_etudiant(const int &noetu,const int &nogrp);
 	void desinscrire_etudiant(const int &no_groupe,const int &no_etudiant);
@@ -84,6 +85,8 @@ protected:
     Groupe* chercher_groupe(const int &nogroupe) const;
     Etudiant* chercher_etudiant(const int &noetu) const;
     Enseignant* chercher_enseignant(const int &noens) const;
+    Date* chercher_date(const Date &date) const;
+
 
 };
 
