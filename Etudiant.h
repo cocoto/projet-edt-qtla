@@ -9,6 +9,7 @@ class Etudiant : public Personne
         Etudiant(const std::string &n ,const std::string &p,const std::string &ap ,const std::string &am,const int &no);
         int get_no_eleve() const;
         bool operator<(const Etudiant &e2) const;
+        bool operator==(const Etudiant &e2) const;
 };
 
 

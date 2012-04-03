@@ -13,5 +13,6 @@ class Salle{
         bool operator<(const Salle &b) const;
         virtual bool verifier_type(const Type_salle & type) const =0;
 		virtual ~Salle();
+        bool operator==(const Salle &s2);
 };
 #endif

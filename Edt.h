@@ -37,10 +37,10 @@ private:
 public:
 	//Createurs d'objets
 	void creer_etudiant(const std::string &n ,const std::string &p,const std::string &ap ,const std::string &am,const int &no);
-	void creer_enseignant();
-	void creer_groupe();
-	void creer_module(const std::string & Code,const std::string & Titre,const int & NombreCM,const int & NombreTD,const int & NombreTP);//Mode CM TD TP
-	void creer_module(const std::string & Code,const std::string & Titre,const int & NombreCTD,const int & NombreTP); //Mode CTDi
+    void creer_enseignant(const std::string &n ,const std::string &p,const std::string &ap ,const std::string &am,const int &no);
+    void creer_groupe(const int &no,const Type_groupe &type);
+    void creer_module(const std::string & Code,const std::string & Titre,const int & NombreCM,const int & NombreTD,const int & NombreTP,const int &noens);//Mode CM TD TP
+    void creer_module(const std::string & Code,const std::string & Titre,const int & NombreCTD,const int & NombreTP,const int &noens); //Mode CTDi
 	void ajouter_date(const int & jour,const int & mois,const int & annee);
 	void ajouter_salle_amphi(const int &numero, const int &capacite);
 	void ajouter_salle_amphi(const int &numero, const int &capacite,const bool & visio);
@@ -48,21 +48,27 @@ public:
 	void ajouter_salle_td(const int &numero, const int &capacite);
 	void ajouter_salle_tp(const int &numero, const int &capacite,const int & nbmachine);
 
-    //@TODO
-	int creer_creneau(const Salle &salle,const Module &module,const Date & date,const Groupe & groupe, const float &duree,const int &heure);
-	//Affectations
+    void supprimer_salle(const int &nosalle);
+    void supprimer_date(const Date &date);
+    void supprimer_module(const std::string & Code);
+    void supprimer_enseignant(const int &noenseignant);
+    void supprimer_etudiant(const int &no);
+    void supprimer_groupe(const int no_groupe);
+    void supprimer_creneau(Creneau *cren);
+
+    int creer_creneau(const int &nsalle,const std::string &nmodule,Date * date,const int & ngroupe, const float &duree,const int &heure);
+    //Affectations
     void inscrire_etudiant(const int &noetu,const int &nogrp);
 	void desinscrire_etudiant(const int &no_groupe,const int &no_etudiant);
 	void inscrire_module(const int &no_groupe,std::string code);
 	void desinscrire_module(const int &no_groupe,std::string code);
 	int modifier_creneau(const Salle &salle,const Module &module,const Date & date,const Groupe & groupe, const float &duree,const int &heure);
 
-    //@FINTODO
 	//Getters autorisés pour l'interface graphique
 	//Ces fonctions permettent à l'interface graphique de n'utiliser les fonctions const des objets
 	//Par exemple, obtenir les information sur les créneaux mais pas les modifier
     const liste_etu& liste_etudiants() const;//Renvois la liste des numéros de tous les étudiants
-    liste_etu liste_etudiants(const int &no_groupe) const; //Renvois la liste des étudiants d'un groupe
+    const liste_etu &liste_etudiants(const int &no_groupe) const; //Renvois la liste des étudiants d'un groupe
 	const liste_cren& liste_creneaux() const;
 	const liste_mod& liste_modules() const;
     const liste_ens& liste_enseignants() const;
@@ -77,6 +83,8 @@ protected:
     Salle*  chercher_salle(const int &salle) const;
     Groupe* chercher_groupe(const int &nogroupe) const;
     Etudiant* chercher_etudiant(const int &noetu) const;
+    Enseignant* chercher_enseignant(const int &noens) const;
+
 };
 
 #endif /* EDT_H_ */

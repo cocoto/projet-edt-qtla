@@ -12,10 +12,10 @@ template<typename T>
 class compare {
 	public:
 		bool operator()(const T* a,const T* b) const{
-			*a<*b;
-		};
-		compare();
-		~compare();
+            return *a<*b;
+        }
+        compare(){}
+        ~compare(){}
 };
 
 #endif /* COMPARE_H_ */

@@ -24,3 +24,7 @@ bool Salle::operator <(const Salle &b) const
 Salle::~Salle()
 {
 }
+
+bool Salle::operator==(const Salle &s2){
+    return numero_==s2.numero_;
+}
