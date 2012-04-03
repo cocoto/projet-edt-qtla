@@ -11,3 +11,6 @@ int Etudiant::get_no_eleve() const
 bool Etudiant::operator<(const Etudiant &e2) const{
     no_eleve_<e2.no_eleve_;
 }
+bool Etudiant::operator==(const Etudiant &e2) const{
+    no_eleve_==e2.no_eleve_;
+}

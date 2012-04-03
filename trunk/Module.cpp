@@ -1,11 +1,11 @@
 #include "Module.h"
 
-Module::Module(const std::string & Code,const std::string & Titre,const int & NombreCM,const int & NombreTD,const int & NombreTP):
-    Code_(Code),Titre_(Titre),NombreCM_(NombreCM),NombreTD_(NombreTD),NombreTP_(NombreTP),NombreCTD_(0)
+Module::Module(const std::string & Code,const std::string & Titre,const int & NombreCM,const int & NombreTD,const int & NombreTP,Enseignant *ens):
+    Code_(Code),Titre_(Titre),NombreCM_(NombreCM),NombreTD_(NombreTD),NombreTP_(NombreTP),NombreCTD_(0),responsable_(ens)
 {}
 
-Module::Module(const std::string & Code,const std::string & Titre,const int & NombreCTD,const int & NombreTP)
-    :Code_(Code),Titre_(Titre),NombreCM_(0),NombreTD_(0),NombreTP_(NombreTP),NombreCTD_(NombreCTD)
+Module::Module(const std::string & Code,const std::string & Titre,const int & NombreCTD,const int & NombreTP,Enseignant* ens)
+    :Code_(Code),Titre_(Titre),NombreCM_(0),NombreTD_(0),NombreTP_(NombreTP),NombreCTD_(NombreCTD),responsable_(ens)
 {}
 std::string Module::get_Code() const{
     return Code_;
@@ -50,4 +50,8 @@ bool Module::est_complet(const liste_creneau & tab_creneau, Groupe *grp)
 
 bool Module::operator<(const Module &m2) const{
     return Code_<m2.Code_;
+}
+
+Enseignant* Module::get_responsable() const{
+    return responsable_;
 }

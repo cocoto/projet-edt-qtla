@@ -36,7 +36,7 @@ Type_groupe Groupe::get_type() const{
 liste_mod Groupe::get_modules() const{
     return liste_modules_;
 }
-liste_etu Groupe::get_etudiants() const{
+const liste_etu &Groupe::get_etudiants() const{
     return liste_etudiants_;
 }
  int Groupe::get_numero() const{
@@ -61,4 +61,20 @@ bool Groupe::supprimer_module(const std::string &cmodule){
         liste_modules_.erase(it);
         return true;
     }
+}
+
+bool Groupe::operator<(const Groupe &b) const{
+    return no_<b.no_;
+}
+bool Groupe::contient_etudiant(Etudiant *e){
+     liste_etu::iterator it=liste_etudiants_.begin();
+     while(it!=liste_etudiants_.end())
+     {
+        if((*it)->get_no_eleve()==e->get_no_eleve())
+         {
+            return true;
+         }
+        it++;
+     }
+     return false;
 }

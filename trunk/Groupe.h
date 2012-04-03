@@ -20,13 +20,14 @@ public:
     bool supprimer_etudiant(const int &no_etudiant);
     int nb_etu();
     bool participe_a(Module* mod);
+    bool contient_etudiant(Etudiant* e);
     void ajouter_module(Module *mod);
     bool supprimer_module(const std::string &cmodule);
     int get_numero() const;
     Type_groupe get_type() const;
     liste_mod get_modules() const;
-    liste_etu get_etudiants() const;
-
+    const liste_etu &get_etudiants() const;
+    bool operator<(const Groupe &b) const;
 };
 
 #endif // GROUPE_H

@@ -35,9 +35,9 @@
 				return annee_<b.annee_;
 			}
 			else if(mois_!=b.mois_){
-				return mois_< b.mois;
+                return mois_< b.mois_;
 			}
-			else return jour<b.jour;
+            else return jour_<b.jour_;
 
 		}
 
