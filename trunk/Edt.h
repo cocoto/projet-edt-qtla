@@ -47,6 +47,7 @@ public:
 	void ajouter_salle_td(const int &numero, const int &capacite,const bool & videoprojecteur);
 	void ajouter_salle_td(const int &numero, const int &capacite);
 	void ajouter_salle_tp(const int &numero, const int &capacite,const int & nbmachine);
+    void creer_creneau(const int &nsalle,const std::string &nmodule,Date * date,const int & ngroupe, const float &duree,const int &heure);
 
     void supprimer_salle(const int &nosalle);
     void supprimer_date(const Date &date);
@@ -56,18 +57,16 @@ public:
     void supprimer_groupe(const int no_groupe);
     void supprimer_creneau(Creneau *cren);
 
-    void creer_creneau(const int &nsalle,const std::string &nmodule,Date * date,const int & ngroupe, const float &duree,const int &heure);
-
     //Affectations
     void inscrire_etudiant(const int &noetu,const int &nogrp);
 	void desinscrire_etudiant(const int &no_groupe,const int &no_etudiant);
 	void inscrire_module(const int &no_groupe,std::string code);
 	void desinscrire_module(const int &no_groupe,std::string code);
-	int modifier_creneau(const Salle &salle,const Module &module,const Date & date,const Groupe & groupe, const float &duree,const int &heure);
 
 	//Getters autorisés pour l'interface graphique
 	//Ces fonctions permettent à l'interface graphique de n'utiliser les fonctions const des objets
 	//Par exemple, obtenir les information sur les créneaux mais pas les modifier
+    //CF descriptions des classes et méthodes constantes
     const liste_etu& liste_etudiants() const;//Renvois la liste des numéros de tous les étudiants
     const liste_etu &liste_etudiants(const int &no_groupe) const; //Renvois la liste des étudiants d'un groupe
 	const liste_cren& liste_creneaux() const;
@@ -80,6 +79,7 @@ public:
 	~Edt();
 
 protected:
+    //Fonctions internes de recherche d'élements dans les set
     Module* chercher_module(const std::string & code) const;
     Salle*  chercher_salle(const int &salle) const;
     Groupe* chercher_groupe(const int &nogroupe) const;

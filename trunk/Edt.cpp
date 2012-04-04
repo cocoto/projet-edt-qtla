@@ -157,6 +157,10 @@ Module* Edt::chercher_module(const std::string & code) const
     {
         return (*it);
     }
+    else
+    {
+        throw "Module inexistant";
+    }
 }
 
 Salle*  Edt::chercher_salle(const int &salle) const
@@ -170,6 +174,10 @@ Salle*  Edt::chercher_salle(const int &salle) const
     {
         return (*it);
     }
+    else
+    {
+        throw "Salle inexistante";
+    }
 }
 Groupe* Edt::chercher_groupe(const int & no_groupe) const
 {
@@ -180,6 +188,10 @@ Groupe* Edt::chercher_groupe(const int & no_groupe) const
     if(it!=liste_groupe.end())
     {
         return *it;
+    }
+    else
+    {
+        throw "Groupe inexistant";
     }
 }
 
@@ -193,6 +205,9 @@ Etudiant* Edt::chercher_etudiant(const int &noetu) const{
     {
         return *it;
     }
+    else{
+        throw "Etudiant inexistant";
+    }
 }
 
 Enseignant* Edt::chercher_enseignant(const int &noens) const{
@@ -205,6 +220,10 @@ Enseignant* Edt::chercher_enseignant(const int &noens) const{
     {
         return *it;
     }
+    else
+    {
+        throw "Enseignant inexistant";
+    }
 }
 
 Date* Edt::chercher_date(const Date &date) const{
@@ -216,6 +235,10 @@ Date* Edt::chercher_date(const Date &date) const{
     if(it!=liste_date.end())
     {
         return *it;
+    }
+    else
+    {
+        throw "Date inexistante";
     }
 }
 
@@ -244,22 +267,28 @@ void Edt::creer_creneau(const int &nsalle,const std::string &nmodule,Date* date,
     Salle* salle=chercher_salle(nsalle);
     Module* module=chercher_module(nmodule);
     Groupe* groupe=chercher_groupe(ngroupe);
-    while(creneau!=liste_creneau.end() && compatible)
+    if(salle->verifier_capacite(groupe->nb_etu()))
     {
-        if(
-                *(*creneau)->getSalle()==*salle &&
-                *(*creneau)->getDate()==*date &&
-                (
-                    ((*creneau)->getHeure() <= heure && (*creneau)->getHeure()+(*creneau)->getDuree()>=heure )
-                     ||((*creneau)->getHeure()>=heure && (*creneau)->getHeure() <= heure+duree )
-                 )
+        while(creneau!=liste_creneau.end() && compatible)
+        {
+            if(
+                    *(*creneau)->getSalle()==*salle &&
+                    *(*creneau)->getDate()==*date &&
+                    (
+                        ((*creneau)->getHeure() <= heure && (*creneau)->getHeure()+(*creneau)->getDuree()>=heure )
+                         ||((*creneau)->getHeure()>=heure && (*creneau)->getHeure() <= heure+duree )
+                     )
 
-           ) {compatible=false;}
-        creneau++;
-    }
-    if(compatible)
-    {
-        liste_creneau.insert(new Creneau(salle,module,date,groupe,duree,heure));
+               ) {compatible=false;}
+            creneau++;
+        }
+        if(compatible)
+        {
+            liste_creneau.insert(new Creneau(salle,module,date,groupe,duree,heure));
+        }
+     }
+    else{
+        throw "Salle trop petite";
     }
 }
 

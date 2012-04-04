@@ -16,16 +16,30 @@ private:
     Type_groupe type_;
 public:
     Groupe(const int &no,const Type_groupe &type);
+
+    //Ajoute un étudiant au groupe
     void ajouter_etudiant(Etudiant *etu);
+
+    //Supprime l'etudiant s'il existe
     bool supprimer_etudiant(const int &no_etudiant);
+
+    //Retourne la capacité du groupe
     int nb_etu();
+
+    //Permet de vérifier si le groupe participe à un module
     bool participe_a(Module* mod);
+
+    //Permet de vérifier qu'un étudiant est inscrit dans ce groupe
     bool contient_etudiant(Etudiant* e);
+
+    //Ajout et retrait des modules inscrits par le groupe
     void ajouter_module(Module *mod);
     bool supprimer_module(const std::string &cmodule);
+
+    //Getters
     int get_numero() const;
     Type_groupe get_type() const;
-    liste_mod get_modules() const;
+    const liste_mod &get_modules() const;
     const liste_etu &get_etudiants() const;
     bool operator<(const Groupe &b) const;
 };

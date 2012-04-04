@@ -1,11 +1,5 @@
 #include "Personne.h"
 
-Personne::Personne(const std::string &n ,const std::string &p)
-{
-    nom_ = n;
-    prenom_ = p;
-}
-
 Personne::Personne(const std::string &n ,const std::string &p ,const std::string &ap ,const std::string &am)
 {
     nom_ = n;

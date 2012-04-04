@@ -23,12 +23,22 @@ class Module
 		//Permet de vérifier que le nombre d'heures effectuées par un groupe dans une liste de créneaux corrrespond bien aux modalités du
 		//Module. (nb heures supérieur ou égal) Les CTD sont considérés comme des cours de type TD
         bool est_complet(const liste_creneau & tab_creneau, Groupe *grp);
+
+        //Getters
         std::string get_Code() const;
         int get_NombreCM() const;
         int get_NombreTD() const;
         int get_NombreTP() const;
         int get_NombreCTD() const;
         Enseignant* get_responsable() const;
+
+        void set_NombreCM(const int &nb);
+        void set_NombreTD(const int &nb);
+        void set_NombreTP(const int &nb);
+        void set_NombreCTD(const int &nb);
+        void set_responsable(Enseignant* ens);
+
+        //Comparaison alphabetique des modules
         bool operator<(const Module &m2) const;
 };
 

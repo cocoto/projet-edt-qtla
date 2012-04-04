@@ -1,8 +1,6 @@
 /*
- * compare.h
- *
- *  Created on: 14 mars 2012
- *      Author: cocoto
+ * Classe permettant la comparaison d'objet à travers des pointeur
+ * Nécéssaire dans l'utilisation des Sets
  */
 
 #ifndef COMPARE_H_
@@ -11,9 +9,12 @@
 template<typename T>
 class compare {
 	public:
+        //operateur indispensable aux set
 		bool operator()(const T* a,const T* b) const{
             return *a<*b;
         }
+
+        //Constructeurs et destructeurs
         compare(){}
         ~compare(){}
 };

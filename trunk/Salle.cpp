@@ -28,3 +28,7 @@ Salle::~Salle()
 bool Salle::operator==(const Salle &s2){
     return numero_==s2.numero_;
 }
+
+void Salle::set_capacite(const int &capacite) const{
+    capacite_=capacite;
+}

@@ -55,3 +55,36 @@ bool Module::operator<(const Module &m2) const{
 Enseignant* Module::get_responsable() const{
     return responsable_;
 }
+
+int Module::get_NombreCM() const{
+    return NombreCM_;
+}
+int Module::get_NombreTD() const{
+    return NombreTD_;
+}
+int Module::get_NombreTP() const{
+    return NombreTP_;
+}
+int Module::get_NombreCTD() const{
+    return NombreCTD_;
+}
+void Module::set_NombreCM(const int &nb){
+    NombreCM_=nb;
+}
+
+void Module::set_NombreTD(const int &nb){
+    NombreTD_=nb;
+}
+
+void Module::set_NombreTP(const int &nb){
+    NombreTP_=nb;
+}
+
+void Module::set_NombreCTD(const int &nb){
+    NombreCTD_=nb;
+
+}
+
+void Module::set_responsable(Enseignant* ens){
+    responsable_=ens;
+}
