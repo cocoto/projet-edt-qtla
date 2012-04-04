@@ -1,14 +1,45 @@
 #include "Date.h"
 
-		Date::Date(const int & jour,const int & mois,const int & annee):jour_(jour),mois_(mois),annee_(annee)
+        Date::Date(const int & jour,const int & mois,const int & annee)
 		{
-		}
+            bool bisextile=(annee%400==0)||(annee%4==0 && annee%100!=0);
+            int taille_mois[13]={0,31,bisextile?29:28,31,30,31,30,31,31,30,31,30,31};
+            if(mois<=12 && mois>0)
+            {
+                if(jour>0 && jour<=taille_mois[mois])
+                {
+                    jour_=jour;
+                    mois_=mois;
+                    annee_=annee;
+                }
+                else{
+                    throw "Date invalide";
+                }
+            }
+            else{
+                throw "Date invalide";
+            }
+        }
 		
 		void  Date::set_date(const int & jour,const int & mois,const int & annee)
 		{
-			jour_=jour;
-			mois_=mois;
-			annee_=annee;
+            bool bisextile=(annee%400==0)||(annee%4==0 && annee%100!=0);
+            int taille_mois[13]={0,31,bisextile?29:28,31,30,31,30,31,31,30,31,30,31};
+            if(mois<=12 && mois>0)
+            {
+                if(jour>0 && jour<=taille_mois[mois])
+                {
+                    jour_=jour;
+                    mois_=mois;
+                    annee_=annee;
+                }
+                else{
+                    throw "Date invalide";
+                }
+            }
+            else{
+                throw "Date invalide";
+            }
 		}
 		
 

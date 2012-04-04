@@ -12,3 +12,6 @@ int Enseignant::get_no_enseignant() const
 bool Enseignant::operator<(const Enseignant &b) const{
     return no_enseignant_<b.no_enseignant_;
 }
+bool Enseignant::operator==(const Enseignant &b)const{
+    return no_enseignant_==b.no_enseignant_;
+}

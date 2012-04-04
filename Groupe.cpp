@@ -33,7 +33,7 @@ bool Groupe::participe_a(Module* mod){
 Type_groupe Groupe::get_type() const{
     return type_;
 }
-liste_mod Groupe::get_modules() const{
+const liste_mod &Groupe::get_modules() const{
     return liste_modules_;
 }
 const liste_etu &Groupe::get_etudiants() const{

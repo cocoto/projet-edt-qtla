@@ -9,13 +9,11 @@ class Date
 	
 		/*
 		* Constructeur
-		* Pré-condition : le format de la date est correcte
 		*/
 		Date(const int & jour,const int & mois,const int & annee);
 		
 		/*
 		* Modifie la date
-		* Pré-condition : le format de la date est correcte
 		*/
 		void set_date(const int & jour,const int & mois,const int & annee);
 		

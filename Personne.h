@@ -5,7 +5,6 @@
 class Personne
 {
     public:
-        Personne(const std::string &n ,const std::string &p);
         Personne(const std::string &n ,const std::string &p,const std::string &ap ,const std::string &am);
         std::string get_nom() const;
         std::string get_prenom() const;

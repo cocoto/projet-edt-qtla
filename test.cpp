@@ -43,7 +43,12 @@ int main(){
      }
 
      //AJOUT D'UNE DATE DE COURS POSSIBLE
-    edt.ajouter_date(1,12,2012);
+    try{
+     edt.ajouter_date(1,12,2012);
+    }
+     catch(const char* e){
+         std::cout<<e<<std::endl;
+     }
 
     //AJOUT D'UNE SALLE AMPHI DE 123 places
     edt.ajouter_salle_amphi(1,123,true);
@@ -116,6 +121,16 @@ int main(){
         it++;
     }
 
+    //TEST D'EXCEPTION
+    edt.ajouter_salle_amphi(2,0,true);
+    try{
+        edt.creer_creneau(2,"As01",new Date(1,12,2012),601,1.0,1);
+    }
+    catch(const char* e)
+    {
+        //Affichage d'une fenetre d'alerte dans le cadre d'une interface graphique
+        std::cout<<"Exception : "<<e<<std::endl;
+    }
 
     return  0;
 }
